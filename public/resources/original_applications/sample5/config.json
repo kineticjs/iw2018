@@ -1,0 +1,16 @@
+{
+  "title": "HTML sanitization",
+  "category": "XSS", 
+  "task": "<p>Open a <a href='./webapp/test/testService.html#/Post/PostID_11' target='_blank'>post</a> of the BuletinBoard app. <p>See you can add comments under the post. <p>Enter a comment that will execute a script whenever someone later sees the post with your comment bellow.</p>",
+  "hints": ["<p>See if the app allows comments to contain <b>html tags</b>.</p>",
+            "<p>See if the app allows comments to contain html <b>script tags</b>.</p>"],
+  "answer": "<p><b>To exploit:</b> <p>You can enter a comment that contains <span style='color:red'>&lt;script&gt;alert(1)&lt;/script&gt;</span> or <span style='color:red'>&lt;img src=&quot;&quot; onerror=&quot;alert(1)&quot;/&gt;</span>  </p> <p><b>To fix:</b> <p>Enable the <a href='https://sapui5.hana.ondemand.com/#/api/sap.ui.core.HTML/controlProperties' target='_blank'>sanitizeContent</a> property of the sap.ui.core.HTML control to run the HTML sanitizer on the content",
+  "app": {
+    "mainURL": "./webapp/test/testService.html#/Post/PostID_11",
+    "editURL": "./webapp/view/Post.view.xml"
+  },
+  "score": {
+    "success": 5,
+    "answer": 5
+  }
+}

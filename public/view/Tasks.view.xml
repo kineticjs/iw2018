@@ -1,0 +1,56 @@
+<mvc:View
+	controllerName="sap.ui.innoweek.controller.Tasks"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	height="100%"
+	displayBlock="true">
+
+	<Page
+		title="{i18n>appTitle}"
+		showNavButton="true"
+		navButtonPress="onNavBack">
+
+		<subHeader>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Title text="{i18n>tasks}" />
+				<ToolbarSpacer/>
+			</Toolbar>
+		</subHeader>
+
+		<content>
+			<Toolbar style="Clear" class="sapUiSmallMarginBegin sapUiMediumMarginTop"><Title text="URL Validation &amp; XSS"/></Toolbar>
+			<HBox id="urlTasks" items="{/tasks}" wrap="Wrap">
+				<items>
+					<GenericTile
+						class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+						header="{title}"
+						press="onPress">
+					</GenericTile>
+				</items>
+			</HBox>
+
+			<Toolbar style="Clear" class="sapUiSmallMarginBegin sapUiMediumMarginTop"><Title text="Clickjacking"/></Toolbar>
+			<HBox id="clickjackingTasks" items="{/tasks}" wrap="Wrap">
+				<items>
+					<GenericTile
+						class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+						header="{title}"
+						press="onPress">
+					</GenericTile>
+				</items>
+			</HBox>
+
+			<Toolbar style="Clear" class="sapUiSmallMarginBegin sapUiMediumMarginTop"><Title text="XSS"/></Toolbar>
+			<HBox id="xssTasks" items="{/tasks}" wrap="Wrap">
+				<items>
+					<GenericTile
+						class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+						header="{title}"
+						press="onPress">
+					</GenericTile>
+				</items>
+			</HBox>
+		</content>
+	</Page>
+</mvc:View>

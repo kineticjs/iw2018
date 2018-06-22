@@ -1,0 +1,18 @@
+{
+  "title": "Stored XSS with attribute injection",
+  "category": "XSS", 
+  "task": "<p>Open a <a href='./webapp/test/testService.html#/Post/PostID_1' target='_blank'>post</a> of the BuletinBoard app. <p>Notice that your Profile (accessed from top-right icon) <a href='img/toProfile.jpg' target='_blank'><img src='img/toProfile.jpg' style='height:3rem'/></a> has <b>URL</b> and <b>email</b> field. <a href='img/profileUrlEmail.jpg' target='_blank'><img src='img/profileUrlEmail.jpg' style='height:3rem'/></a> <p>When you enter comments bellow a post, a link to those <b>URL</b> and <b>email</b> appears (as <b>link icon</b>) bellow each comment.<a href='img/profileUrlEmailIcon.jpg' target='_blank'><img src='img/profileUrlEmailIcon.jpg' style='height:3rem'/></a> <span style='color:gray'><p><b>Task:</b><p>Enter values for mail/or url (from your profile page) such that a script is executed when the user mouse-hovers over the mail/url icons bellow your comment",
+  "hints": [
+    "<p>Exploit a vulnerability of the <b>custom.InfoBar</b> control that adds the externally-supplied <b>URL</b> and <b>email</b> values to the DOM.",
+    "<p>For controls that allow any content to be added as attribute value, we can try to inject an event listener. <p>For example, try make the control render output like <b>&lt;input value=&quot;&quot; onchange=&quot;alert(1)&quot;/&gt;</b> by supplying the string: <span style='color:red'>&quot; onchange=&quot;alert(1)</span> to the input's <b>&quot;value&quot;</b> attribute. <br>The same strategy can be used to insert code to any element attribute."
+  ],
+  "answer": "<p><b>To exploit:</b> <p>A successfull attack will be a to enter in the Profile section an email like:<br><span style='color:red'>&quot; onmouseover=&quot;alert(1)</span><br>so that the final output becomes:<br><span style='color:red'>&lt;a href=&quot;mailto:&quot; onmouseover=&quot;alert(1)&quot;&gt;some content&lt;/a&gt;</span></p><p>This works because the custom control <a href='./webapp/custom/InfoBar.js' target='_blank'>custom.InfoBar</a> does not encode the attribute values that it outputs to the DOM. <p><b>To fix:</b><p>Escape all the special characters like &quot; etc. so that the browser does not interpret them as part of markup (e.g. &quot; as end of atttribute value), but only as text to be passively rendered..</p><p><img src='img/answer2.PNG'/></p>",
+  "app": {
+    "mainURL": "./webapp/test/testService.html#/Post/PostID_11",
+    "editURL": "./webapp/custom/InfoBar.js"
+  },
+  "score": {
+    "success": 5,
+    "answer": 5
+  }
+}

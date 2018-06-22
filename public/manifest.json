@@ -1,0 +1,109 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "sap.ui.innoweek",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "sap.ui.innoweek.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30",
+			"libs": {
+				"sap.m": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "sap.ui.innoweek.i18n.i18n"
+				}
+			},
+			"tiles": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "tiles.json"
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "sap.ui.innoweek.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true,
+				"bypassed": {
+					"target": "notFound"
+				}
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "home",
+					"target": "home"
+				},
+				{
+					"pattern": "tasks/{taskCategory}",
+					"name": "tasks",
+					"target": "tasks"
+				},
+				{
+					"pattern": "task/{token}",
+					"name": "tasksWithToken",
+					"target": "tasksWithToken"
+				},
+				{
+					"pattern": "task/{token}/edit",
+					"name": "edit",
+					"target": "edit"
+				}
+			],
+			"targets": {
+				"home": {
+					"viewID": "home",
+					"viewName": "Home",
+					"viewLevel": 1
+				},
+				"tasks": {
+					"viewID": "tasks",
+					"viewName": "Tasks",
+					"viewLevel": 2
+				},
+				"tasksWithToken": {
+					"viewID": "preview",
+					"viewName": "Preview",
+					"viewLevel": 3
+				},
+				"edit": {
+					"viewID": "edit",
+					"viewName": "Edit",
+					"viewLevel": 3
+				},
+				"notFound": {
+				   "viewId": "notFound",
+				   "viewName": "NotFound",
+				   "transition": "show"
+				}
+			}
+		}
+	}
+}

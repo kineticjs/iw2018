@@ -1,0 +1,16 @@
+{
+  "title": "URL Validation (medium)",
+  "category": "URL", 
+  "task": "<p>Open the <a href='./webapp/test/testService.html#/Post/PostID_11' target='_blank'>app.</a></p><p>Notice that your Profile (accessed from top-right icon) <a href='img/toProfile.jpg' target='_blank'><img src='img/toProfile.jpg' style='height:3rem'/></a> has URL field <a href='img/profileUrl.jpg' target='_blank'><img src='img/profileUrl.jpg' style='height:3rem'/></a>.  <p>When you enter comments bellow a post, a link to that URL appears (as <b>link icon</b>) bellow each comment. <a href='img/profileUrlIcon.jpg' target='_blank'><img src='img/profileUrlIcon.jpg' style='height:3rem'/></a> <p><b>Task: In your profile, change the URL to one that starts with https://example.com but actually leads to http://localhost:3000</b> <br>(such that anyone who later clicks on the associated icon bellow your comment <a href='img/profileUrlIcon.jpg' target='_blank'><img src='img/profileUrlIcon.jpg' style='height:3rem'/></a> actually opens http://localhost:3000)</p>",
+  "hints": ["<p>Check the <a href='https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Examples' target='_blank'>generic URL structure.</a> Which section preceeds the 'host' section?</p>"],
+  "answer": "<p>For a successful attack, you can enter URL value: <span style='color:red'>https://example.com&gibberish=1234@localhost:3000/</span> <p>To Fix: <p> <a href='https://sapui5.hana.ondemand.com/#/topic/91f3768f6f4d1014b6dd926db0e91070.html' target='_blank'>URL validation against a whitelist</a> (<b> UI5 app</b> duty and the solution to test for this task)",
+  "app": {
+    "mainURL": "./webapp/test/testService.html#/Post/PostID_11",
+    "editURL": "./webapp/controller/Profile.controller.js",
+    "testURL": "./webapp/test/testService.html#/Profile/gamer"
+  },
+  "score": {
+    "success": 5,
+    "answer": 5
+  }
+}

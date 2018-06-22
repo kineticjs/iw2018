@@ -1,0 +1,35 @@
+<mvc:View
+		controllerName="sap.ui.demo.bulletinboard.controller.Profile"
+		xmlns="sap.m"
+		xmlns:form="sap.ui.layout.form"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:semantic="sap.m.semantic"
+		xmlns:custom="custom">
+	<semantic:FullscreenPage
+			id="page"
+			busy="{profileView>/busy}"
+			busyIndicatorDelay="0"
+			navButtonPress="onNavBack"
+			showNavButton="true"
+			title="{Name}">
+		<semantic:content>
+
+			<ObjectHeader
+					id="objectHeader"
+					title="Edit Profile">
+			</ObjectHeader>
+
+			<form:SimpleForm>
+				<form:content>
+					<Label text="Display Name"/>
+					<Input id="name" value="{Name}"/>
+					<Label text="Email"/>
+					<Input id="email" value="{Email}"/>
+					<Label text="URL"/>
+					<Input id="url" value="{Url}"/>
+				</form:content>
+			</form:SimpleForm>
+
+		</semantic:content>
+	</semantic:FullscreenPage>
+</mvc:View>

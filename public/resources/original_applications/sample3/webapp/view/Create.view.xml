@@ -1,0 +1,43 @@
+<mvc:View
+		controllerName="sap.ui.demo.bulletinboard.controller.Create"
+		xmlns="sap.m"
+		xmlns:form="sap.ui.layout.form"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:semantic="sap.m.semantic"
+		xmlns:custom="custom"
+		xmlns:secantic="sap.m.semantic">
+	<semantic:FullscreenPage
+			id="page"
+			busy="{postView>/busy}"
+			busyIndicatorDelay="0"
+			navButtonPress="onNavBack"
+			showNavButton="true"
+			title="{i18n>objectTitle}">
+		<semantic:customHeaderContent>
+			<Button text="Save" type="Emphasized" press="onSave"/>
+			<Button text="Cancel" press="onCancel"/>
+		</semantic:customHeaderContent>
+		<semantic:content>
+
+			<ObjectHeader
+					id="objectHeader"
+					title="Create Post">
+			</ObjectHeader>
+
+				<form:SimpleForm>
+					<form:content>
+						<Label required="true" text="Title"/>
+						<Input id="title"/>
+						<Label required="true" text="Description"/>
+						<TextArea id="description"/>
+						<Label required="true" text="Price:"/>
+						<HBox>
+							<Input type="Number" id="price"/>
+							<Text text="USD"/>
+						</HBox>
+					</form:content>
+				</form:SimpleForm>
+
+		</semantic:content>
+	</semantic:FullscreenPage>
+</mvc:View>

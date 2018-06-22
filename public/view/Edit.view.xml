@@ -1,0 +1,25 @@
+<mvc:View
+	controllerName="sap.ui.innoweek.controller.Edit"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	height="100%"
+	displayBlock="true">
+
+	<Page
+		id="editPage"
+		title="{i18n>editTitle}"
+		showNavButton="true"
+		class="sapUiContentPadding editPage"
+		navButtonPress="handleCancel">
+
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Save" type="Accept" press="handleSave" />
+				<Button text="Cancel" type="Reject" press="handleCancel" />
+				<Button text="Open" type="Accept" press="handleOpen" />
+			</Toolbar>
+		</footer>
+
+	</Page>
+</mvc:View>

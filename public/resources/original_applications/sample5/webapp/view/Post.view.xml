@@ -1,0 +1,85 @@
+<mvc:View
+		controllerName="sap.ui.demo.bulletinboard.controller.Post"
+		xmlns="sap.m"
+		xmlns:form="sap.ui.layout.form"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:core="sap.ui.core"
+		xmlns:semantic="sap.m.semantic"
+		xmlns:custom="custom">
+	<semantic:FullscreenPage
+			id="page"
+			busy="{postView>/busy}"
+			busyIndicatorDelay="0"
+			navButtonPress="onNavBack"
+			showNavButton="true"
+			title="{i18n>objectTitle}">
+		<semantic:customHeaderContent>
+			<Button icon="sap-icon://person-placeholder" tooltip="Edit Profile" press="onProfilePress"/>
+		</semantic:customHeaderContent>
+		<semantic:content>
+
+			<ObjectHeader
+					id="objectHeader"
+					title="{Title}"
+					number="{Price}"
+					numberUnit="{Currency}">
+			</ObjectHeader>
+			<IconTabBar id="iconTabBar"
+						expanded="{device>/isNoPhone}"
+						class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter icon="sap-icon://hint" key="info">
+						<form:SimpleForm>
+							<form:content>
+								<Label text="{i18n>postDateLabel}"/>
+								<Text text="{
+									path: 'Timestamp',
+									formatter: '.formatter.date'
+								}"/>
+								<Label text="{i18n>postDescriptionLabel}"/>
+								<Text text="{Description}"/>
+
+							</form:content>
+						</form:SimpleForm>
+						<Panel class="sapUiContentPadding"
+							   headerText="{i18n>postCommentsTabTitle}"
+							   busy="{postView>/commentsBusy}">
+							<content>
+								<FeedInput id="feedInput" post="onCreateComment"/>
+								<List
+										id="commentsList"
+										items="{path: '/Comments'}"
+										showSeparators="Inner"
+										updateStarted="onCommentsUpdateStarted"
+										updateFinished="onCommentsUpdateFinished">
+
+									<CustomListItem>
+										<HBox>
+											<Image src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRHrlt--n3tZ48xHL_XZmQtOrnIkY4j_KoWTimFPHUqoOaSIoPkhg"
+												   width="2rem" height="2rem" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+											<VBox  class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom HTML" >
+												<!-- {codeeditor} -->
+												<core:HTML id="commentText" sanitizeContent="false" content="{Text}"/>
+												<!-- {codeeditor} -->
+												<Toolbar id="userDetails">
+													<custom:InfoBar
+															homepageUrl="{Url}"
+															email="{Email}">
+													</custom:InfoBar>
+													<Text text="{Name}"/>
+												</Toolbar>
+											</VBox>
+										</HBox>
+									</CustomListItem>
+								</List>
+							</content>
+						</Panel>
+					</IconTabFilter>
+					<IconTabFilter icon="sap-icon://inspection" key="statistics">
+						<Text text="Viewed 55555 times" id="viewCounter"/>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</semantic:content>
+	</semantic:FullscreenPage>
+</mvc:View>

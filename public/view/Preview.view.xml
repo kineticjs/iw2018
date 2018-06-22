@@ -1,0 +1,127 @@
+<mvc:View
+	controllerName="sap.ui.innoweek.controller.Preview"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout"
+	xmlns:uxap="sap.uxap"
+	xmlns:core="sap.ui.core"
+	height="100%"
+	displayBlock="true">
+
+	<Page
+		id="taskDetails"
+		title="{i18n>appTitle}"
+		showNavButton="true"
+		navButtonPress="onNavBack">
+
+		<uxap:ObjectPageLayout id="detailObjectPage"
+						  showAnchorBarPopover="true"
+						  upperCaseAnchorBar="false">
+			<uxap:headerTitle>
+				<uxap:ObjectPageHeader id="title" objectTitle="{/title}">
+					<uxap:actions>
+						<uxap:ObjectPageHeaderActionButton text="{i18n>edit}" icon="sap-icon://edit-outside" hideIcon="false" hideText="false" press="onEdit"/>
+						<uxap:ObjectPageHeaderActionButton text="{i18n>test}" icon="sap-icon://play" hideIcon="false" hideText="false" press="onTest"/>
+						<uxap:ObjectPageHeaderActionButton text="{i18n>open}" icon="sap-icon://inspect" hideIcon="false" hideText="false" press="onOpen"/>
+					</uxap:actions>
+				</uxap:ObjectPageHeader>
+			</uxap:headerTitle>
+
+			<uxap:headerContent>
+				<layout:VerticalLayout class="sapUiTinyMargin">
+					<Label text="Score"/>
+					<ProgressIndicator
+							percentValue="0"
+							displayValue="{/currentScore}"
+							showValue="true"
+							state="{/scoreState}"/>
+				</layout:VerticalLayout>
+			</uxap:headerContent>
+
+			<uxap:sections>
+
+				<uxap:ObjectPageSection title="Task" titleUppercase="false">
+					<uxap:ObjectPageSubSection>
+						<uxap:blocks>
+							<core:HTML content="{/taskDescription}" />
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:ObjectPageSection>
+
+				<uxap:ObjectPageSection title="Hints" id="hintsSection" titleUppercase="false">
+					<uxap:ObjectPageSubSection>
+						<uxap:blocks>
+
+							<layout:VerticalLayout width="100%">
+
+								<List width="100%" noDataText="No hints requested..." items="{/hintsList}">
+									<CustomListItem>
+										<core:HTML content="{content}"/>
+									</CustomListItem>
+								</List>
+
+								<Button icon="sap-icon://request" text="Request hint" press="handleHintRequest" enabled="{/bHintButtonStatus}" />
+							</layout:VerticalLayout>
+
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:ObjectPageSection>
+
+				<uxap:ObjectPageSection title="Test" titleUppercase="false">
+					<uxap:ObjectPageSubSection>
+						<uxap:blocks>
+
+							<layout:VerticalLayout width="100%">
+								<MessageStrip
+										text="Click on the 'Edit' action (in the header) to modify sources and fix the security issue and then retest."
+										type="Success"
+										showIcon="true"
+										showCloseButton="false"
+										enableFormattedText="true"
+										visible="{= !${/bSuccess} }"
+										class="sapUiSmallMarginBottom sapUiSmallMarginTop">
+								</MessageStrip>
+								<MessageStrip
+										text="You have already passed the test and are rewarded {/score/answer} point{= ${/score/answer} > 1 ? 's' : '' }. You can continue to further test and improve your solution but you will not be awarded any additional points."
+										type="Success"
+										showIcon="true"
+										showCloseButton="false"
+										enableFormattedText="true"
+										visible="{/bSuccess}"
+										class="sapUiSmallMarginBottom sapUiSmallMarginTop">
+								</MessageStrip>
+								<Button icon="sap-icon://play" text="Test fix" type="Accept" press="onTest" />
+							</layout:VerticalLayout>
+
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:ObjectPageSection>
+
+				<uxap:ObjectPageSection title="Answer" titleUppercase="false">
+					<uxap:ObjectPageSubSection>
+						<uxap:blocks>
+
+							<layout:VerticalLayout width="100%">
+								<core:HTML content="{/answerContent}"/>
+								<MessageStrip
+									text="Viewing the answer will cost you {/score/answer} point{= ${/score/answer} > 1 ? 's' : '' }"
+									type="Error"
+									showIcon="true"
+									showCloseButton="false"
+									enableFormattedText="true"
+									visible="{= !!${/bAnswerButtonEnabled} }"
+									class="sapUiSmallMarginBottom sapUiSmallMarginTop">
+								</MessageStrip>
+								<Button icon="sap-icon://incident" enabled="{/bAnswerButtonEnabled}" text="Show answer" type="Reject" press="handleRequestAnswer" />
+							</layout:VerticalLayout>
+
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:ObjectPageSection>
+
+			</uxap:sections>
+
+		</uxap:ObjectPageLayout>
+
+	</Page>
+</mvc:View>

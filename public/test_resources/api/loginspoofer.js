@@ -1,0 +1,1 @@
+alert('login spoofer injected!');

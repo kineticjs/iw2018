@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>Exploit Sample</title>
+
+    <script id="sap-ui-bootstrap"
+            src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+            data-sap-ui-libs="sap.m,sap.ui.layout"
+            data-sap-ui-theme="sap_belize"
+            data-sap-ui-compatVersion="edge"
+            data-sap-ui-preload="async"
+            data-sap-ui-modules="jquery.sap.storage"
+            data-sap-ui-resourceroots='{ "data": "." }'
+            data-sap-ui-frameOptions='allow'>// NON-SECURE setting for testing environment
+    </script>
+
+    <script type="text/javascript">
+
+
+
+
+        function createContent(oConfig) {
+
+			new sap.m.App({ pages: [
+
+					new sap.m.Page({
+
+						title: oConfig.title,
+
+                        content: [
+
+                        	new sap.ui.layout.form.SimpleForm("form", {
+                                editable: true,
+                                content: [
+
+                                	new sap.m.Label({ text: "Task"}),
+                                    new sap.ui.core.HTML({ content: oConfig.task})
+
+                                ]
+                            })
+                        ]
+
+					})
+				]}).placeAt("content");
+
+
+			var aHints = oConfig.hints,
+                oForm,
+                i = 0;
+
+			if (aHints.length) {
+				oForm = sap.ui.getCore().byId("form");
+				aHints.forEach(function(sHint) {
+					oForm.addContent(new sap.m.Label({ text: "Hint" + ++i}));
+					oForm.addContent(new sap.m.FormattedText({ htmlText: sHint}));
+                });
+            }
+
+
+			oForm.addContent(new sap.m.Label({ text: "Answer"}));
+			oForm.addContent(new sap.ui.core.HTML({ content: oConfig.answer}));
+
+        }
+
+
+        sap.ui.getCore().attachInit(function() {
+
+			var oConfigModel = new sap.ui.model.json.JSONModel(jQuery.sap.getModulePath("data",
+				"/config.json"));
+
+			oConfigModel.attachEventOnce("requestCompleted", function() {
+				var oConfig = oConfigModel.getData() || {};
+				createContent(oConfig);
+			});
+
+
+        });
+    </script>
+
+</head>
+
+<body id="content">
+
+</body>
+</html>

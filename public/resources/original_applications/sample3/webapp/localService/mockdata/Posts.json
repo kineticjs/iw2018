@@ -1,0 +1,90 @@
+[
+  {
+	"PostID": "PostID_1",
+	"Title": "29'er Mountain Bike (Red)",
+	"Timestamp": "/Date(1428223780000)/",
+	"Description": "<p>A great mountainbike, barely used and good as new. Pedals and saddle included</p>",
+	"Category": "Bicycles",
+	"Contact": "contact.me07@gmail.com",
+	"Currency": "USD",
+	"Price": 81,
+	"Flagged": 0,
+	 "Recommended": 0,
+	 "Recommendations": 1,
+	"Comments": [
+	  {
+		"CommentID": "CommentID_1",
+		"Description": "This is a great item ",
+		"Text": "This is a great item ",
+		"Timestamp": "/Date(1428504382000)/"
+	  },
+	  {
+		"CommentID": "CommentID_2",
+		"Text": "Is there only a single item available?",
+		"Timestamp": "/Date(1433357393000)/"
+	  },
+	  {
+		"CommentID": "CommentID_3",
+		"Text": "Is there only a single item available?",
+		"Timestamp": "/Date(1433357393000)/"
+	  },
+	  {
+		"CommentID": "CommentID_4",
+		"Text": "Is there only a single item available?",
+		"Timestamp": "/Date(1433357393000)/"
+	  }
+	]
+  },
+  {
+	"PostID": "PostID_11",
+	"Title": "DVD: Trains of Europe",
+	"Timestamp": "/Date(1425446058000)/",
+	"Description": "<p>An amazing collection of train models all around Europe, total runtime 412 minutes.</p>",
+	"Category": "Multimedia",
+	"Contact": "hopOnTheTrain@gmail.com",
+	"Currency": "USD",
+	"Price": 61,
+	"Flagged": 0,
+	  "Recommended": 0,
+	  "Recommendations": 0
+  },
+  {
+	"PostID": "PostID_12",
+	"Title": "Matress",
+	"Timestamp": "/Date(1435612710000)/",
+	"Description": "<p>Bed Mattress 30 x 70 inch, filled with natural fibers, barely used</p>",
+	"Category": "Miscellaneous",
+	"Contact": "abc@gmail.com",
+	"Currency": "USD",
+	"Price": 306,
+	"Flagged": 0,
+	  "Recommended": 0,
+	  "Recommendations": 0
+  },
+  {
+	"PostID": "PostID_13",
+	"Title": "High-End Gamer PC",
+	"Timestamp": "/Date(1436435262000)/",
+	"Description": "<p>3Ghz dual core, 16gb RAM, high tower. Great for playing the latest games.</p>",
+	"Category": "Furniture",
+	"Contact": "player.mike@gmail.com",
+	"Currency": "USD",
+	"Price": 256,
+	"Flagged": 0,
+	  "Recommended": 0,
+	  "Recommendations": 0
+  },
+  {
+	"PostID": "PostID_14",
+	"Title": "Cooking Pot Set",
+	"Timestamp": "/Date(1427938348000)/",
+	"Description": "<p>Stainless steel cooking pots (10 pcs) with a matching lid each.</p>",
+	"Category": "Miscellaneous",
+	"Contact": "abc@gmail.com",
+	"Currency": "USD",
+	"Price": 234,
+	"Flagged": 0,
+	  "Recommended": 0,
+	  "Recommendations": 0
+  }
+]

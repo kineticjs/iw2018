@@ -1,0 +1,14 @@
+<mvc:View
+	controllerName="sap.ui.demo.bulletinboard.controller.Search"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:semantic="sap.m.semantic"
+	xmlns:custom="custom">
+	<Page
+		id="page"
+		title="{i18n>worklistViewTitle}">
+		<content>
+			<SearchField id="txtSearch1" value="{searchView>/searchTerm}" width="50%" search="onFilterItems"/>
+		</content>
+	</Page>
+</mvc:View>

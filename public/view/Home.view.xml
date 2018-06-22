@@ -1,0 +1,30 @@
+<mvc:View
+	controllerName="sap.ui.innoweek.controller.Home"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	height="100%">
+
+	<Page title="{i18n>appTitle}">
+
+		<Panel class="sapUiSmallMarginBeginEnd" width="auto">
+			<content>
+				<VBox>
+					<Text text="{i18n>appDescription}"/>
+					<HBox items="{tiles>/TileCollection}" wrap="Wrap" class="sapUiSmallMarginTop">
+						<items>
+							<GenericTile
+								class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+								header="{tiles>header}"
+								state="{tiles>state}"
+								press="onPress">
+								<TileContent>
+									<ImageContent src="{tiles>icon}"/>
+								</TileContent>
+							</GenericTile>
+						</items>
+					</HBox>
+				</VBox>
+			</content>
+		</Panel>
+	</Page>
+</mvc:View>

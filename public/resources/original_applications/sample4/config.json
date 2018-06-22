@@ -1,0 +1,16 @@
+{
+  "title": "Clickjacking",
+  "category": "Clickjacking", 
+  "task": "<p>Complete a clickjacking attack: <p>Complete the frame css of the <a href='sample.html' target='_blank'>sample page</a> to trick the victim click on the <b>'Recommend'</b> button inside the app while thinking he is clicking on the green <b>'Continue'</b> button. </p>",
+  "hints": ["<p>For a successful attack, the frame should be <b>invisible</b> and right <b>on top</b> of the image. <p>In this way, when the user clicks on the area of the <b>&quot;Continue&quot;</b> button, the click will be processed in the frame.</p>"],
+  "answer": "<p><b>To exploit:</b> <p>For a successful attack, the frame styles (in this setup) should be: <br> <span style='color:red'>opacity: 0; z-index: 2; position: absolute;</span></p><p><b>To Fix:</b><p>The common way to defend against Clickjacking is to include functionality that prevents other web pages from framing the site we wish to defend. <p>Options:</p><ol><li><p>Configure <a target='_blank' href='https://sapui5.hana.ondemand.com/#/topic/62d9c4d8f5ad49aa914624af9551beb7'>Frame Options</a> to define whether SAPUI5 is allowed to run embedded in a frame or only from trusted origins or not at all. </p><li><p>Enable <a href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options' target='_blank'>X-Frame-Options response header</a> to indicate whether or not a browser should be allowed to render a page in a frame. <p>Then our page will become: <a href='sample.html?frame-deny' target='_blank'>open</a> the page and check in the 'Network' panel that the embedded page returns <b>X-Frame-Options: DENY</b> response header <p> => the browser refuses to display the embedded page and also prints a console error</ol>",
+  "app": {
+    "mainURL": "./sample.html",
+    "editURL": "./webapp/test/testService.html",
+    "testURL": "./webapp/test/testService.html"
+  },
+  "score": {
+    "success": 5,
+    "answer": 5
+  }
+}

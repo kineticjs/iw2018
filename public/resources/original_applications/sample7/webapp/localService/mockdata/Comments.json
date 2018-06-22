@@ -1,0 +1,30 @@
+[
+	{
+	  "CommentID": "CommentID_1",
+	  "PostID": "PostID_11",
+	  "Username": "gamer",
+	  "Text": "<span>This is a great item </span>",
+	  "Timestamp": "/Date(1428504382000)/"
+	},
+	{
+	  "CommentID": "CommentID_2",
+	  "PostID": "PostID_11",
+	  "Username": "gamer",
+	  "Text": "<span>Is there only a single item available?</span>",
+	  "Timestamp": "/Date(1433357393000)/"
+	},
+	{
+	  "CommentID": "CommentID_3",
+	  "PostID": "PostID_11",
+	  "Username": "stalker",
+	  "Text": "<span>When is it produced?</span>",
+	  "Timestamp": "/Date(1433357393000)/"
+	},
+	{
+	  "CommentID": "CommentID_4",
+	  "PostID": "PostID_2",
+	  "Username": "stalker",
+	  "Text": "<span>I've seen similar ones in the shop for less money</span>",
+	  "Timestamp": "/Date(1433357393000)/"
+	}
+]

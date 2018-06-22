@@ -1,0 +1,15 @@
+.editPage pre {
+	tab-size: 2rem;
+}
+.editPage .sapCEd {
+	border: solid #999 1px;
+}
+
+.applicationScore {
+	font-size: 24px;
+	text-align: center;
+}
+
+.hint {
+	padding: 10px;
+}

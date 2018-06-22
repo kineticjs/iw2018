@@ -1,0 +1,16 @@
+# Ignore IntelliJ project and settings files
+.idea
+*.iml
+
+# Ignore npm files/folders
+node_modules
+npm-debug.log
+
+# Ignore Mac files
+.DS_Store
+
+# Ignore Visual Studio Code project and settings files
+.vscode/
+
+# Ignore token applications
+public/resources/token_applications/

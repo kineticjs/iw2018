@@ -1,0 +1,57 @@
+{
+	"TileCollection" : {
+		"security": {
+			"icon" : "sap-icon://locked",
+			"header" : "Security",
+			"category" : "security",
+			"state" : "Loaded",
+			"tasks" : [
+				{
+					"title": "task 1"
+				},
+				{
+					"title": "task 2"
+				},
+				{
+					"title": "task 3"
+				}
+			]
+		},
+		"troubleshooting": {
+			"icon" : "sap-icon://wrench",
+			"header" : "Troubleshooting",
+			"category" : "troubleshooting",
+			"state" : "Disabled"
+		},
+		"globalization": {
+			"icon" : "sap-icon://globe",
+			"header" : "Globalization",
+			"category" : "globalization",
+			"state" : "Disabled"
+		},
+		"performance": {
+			"icon" : "sap-icon://performance",
+			"header" : "Performance",
+			"category" : "performance",
+			"state" : "Disabled"
+		},
+		"loggingTracing": {
+			"icon" : "sap-icon://list",
+			"header" : "Logging & Tracing",
+			"category" : "loggingTracing",
+			"state" : "Disabled"
+		},
+		"customControls": {
+			"icon" : "sap-icon://lab",
+			"header" : "Custom Controls",
+			"category" : "customControls",
+			"state" : "Disabled"
+		},
+		"accessibility": {
+			"icon" : "sap-icon://display",
+			"header" : "Accessibility",
+			"category" : "accessibility",
+			"state" : "Disabled"
+		}
+	}
+}

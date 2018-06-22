@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Bulletin Board</title>
+
+
+	<!-- Bootstrap the UI5 core library -->
+	<!-- {codeeditor} -->
+	<script id="sap-ui-bootstrap"
+			src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-preload="async"
+			data-sap-ui-modules="jquery.sap.storage"
+			data-sap-ui-resourceroots='{
+				"sap.ui.demo.bulletinboard": "../",
+				"custom": "../custom"
+			}'
+			data-sap-ui-frameOptions='allow'>// NON-SECURE setting for testing environment
+	</script>
+	<!-- {codeeditor} -->
+
+	<script type="text/javascript">
+		sap.ui.getCore().attachInit(function () {
+
+			sap.ui.require([
+				"sap/ui/demo/bulletinboard/localService/mockserver",
+				"sap/m/Shell",
+				"sap/ui/core/ComponentContainer"
+			], function (mockserver, Shell, ComponentContainer) {
+				// set up test service for local testing
+				mockserver.init();
+
+				// initialize the shell
+				new Shell({
+					app: new ComponentContainer({
+						height: "100%",
+						name: "sap.ui.demo.bulletinboard"
+					})
+				}).placeAt("content");
+			});
+		});
+	</script>
+
+</head>
+
+<style type="text/css">
+
+	.bluebg,
+	.sapMBtn.bluebg .sapMBtnInner{
+		background-image: url('https://image.freepik.com/free-vector/blue-geometric-shapes-background_1053-276.jpg');
+		background-image: url('https://s-media-cache-ak0.pinimg.com/originals/b1/ca/00/b1ca0041a90067b6824016a22bfa4af2.jpg');
+		background-image: url('http://hdphonewallpapers.com/content/rUjjHnGXhhK8CYCKtD98nnyHcOGPFOfQ34r2qcGlKcOZEffzfqjcIPGDebG2hzSS.jpg');
+	}
+
+	.sapMBtn.bluebg {
+		background-image:none;
+	}
+
+	.sapMBtn.bluebg .sapMBtnInner ,
+	.controlLink {
+		display: inline-block;
+		line-height: 2.375rem;
+		color: #346187;
+		border-color: #346187;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 0.875rem;
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		background-color: #f7f7f7;
+		border: 1px solid #ababab;
+		border-radius: 0.2rem;
+		text-decoration: none;
+	}
+</style>
+
+<!-- UI Content -->
+<body class="sapUiBody" id="content">
+</body>
+</html>

