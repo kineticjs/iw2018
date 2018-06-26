@@ -9,7 +9,6 @@ var app2 = require('../app');
 var debug = require('debug')('innowek2018:server');
 var http = require('http');
 var http2 = require('http');
-var bCreateServer2 = false;
 
 
 // =================== CREATE SERVER ON PORT 3000 =========================== //
@@ -47,13 +46,10 @@ app2.set('port', port2);
  * Create HTTP server.
  */
 
- if (bCreateServer2) {
-	 var server2 = http2.createServer(app2);
+var server2 = http2.createServer(app2);
 
-	server2.listen(port2);
-	server.on('listening', onListening2);
- }
-
+server2.listen(port2);
+server.on('listening', onListening2);
 
 
 // =================== END SERVER INIT =========================== //
